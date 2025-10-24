@@ -1,14 +1,18 @@
 import requests
+print(requests.__version__)
+
 
 print("=== Simple Weather App ===")
 
 city = input("Enter city name: ")
 
-api_key = "YOUR_API_KEY"
+api_key = "1d4551248c55c6d35988b5d3b8fcee39"
 
 url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
 
 response = requests.get(url)
+print(response.json())
+
 
 if response.status_code == 200:
     data = response.json()
@@ -22,3 +26,4 @@ if response.status_code == 200:
     print(f"Condition: {weather['description'].capitalize()}")
 else:
     print("\nCity not found. Please check the name and try again.")
+
